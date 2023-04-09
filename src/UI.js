@@ -47,10 +47,27 @@ const createProjectForm = () => {
   sidebar.appendChild(form);
 };
 
+const addNewProject = () => {
+  const addProjectBtn = document.querySelector('.addProjectBtn');
+  addProjectBtn.addEventListener('click', () => {
+    const projectForm = document.querySelector('.project-form');
+    projectForm.classList.add('active');
+  });
+};
+const cancelProject = () => {
+  const cancelProjectBtn = document.querySelector('.cancel-project');
+  const projectForm = document.querySelector('.project-form');
+  cancelProjectBtn.addEventListener('click', () => {
+    projectForm.reset();
+    projectForm.classList.remove('active');
+  });
+};
 export default () => {
   createHeading();
   createSidebar();
   createContent();
   createProject();
   createProjectForm();
+  addNewProject();
+  cancelProject();
 };
