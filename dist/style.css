@@ -45,3 +45,29 @@
     cursor: pointer;
     color:black;
 }
+.project-form{
+    display: none;
+}
+.project-form.active{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+#project-name{
+    align-self: center;
+    width: 200px;
+    font-size: 1.3rem;
+    padding: 3px;
+}
+.project-form button{
+    padding:5px 10px;
+    font-size:1.2rem;
+}
+.new-project{
+    background-color: greenyellow;
+}
+.cancel-project{
+    background-color: red;
+    color: white;;
+}

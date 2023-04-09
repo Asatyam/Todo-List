@@ -39,11 +39,14 @@ const createProjectForm = () => {
         placeholder="Project Name"
         required
       />
-      <button type="submit">Add</button>
-      <button type="cancel">Cancel</button>`;
+      <div class="buttons">
+      <button type="submit" class="new-project">Add</button>
+      <button type="button" class="cancel-project">Cancel</button>
+      </div>`;
   const sidebar = document.querySelector('.sidebar');
   sidebar.appendChild(form);
 };
+
 export default () => {
   createHeading();
   createSidebar();
