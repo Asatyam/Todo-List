@@ -1,7 +1,9 @@
-import Project from './Logic';
+import Project from './Project';
+import Todo from './Todo';
 
 const Projects = [];
 const main = document.querySelector('.main');
+
 
 const createHeading = () => {
   const headingDiv = document.createElement('div');
@@ -65,6 +67,16 @@ const cancelProject = () => {
     projectForm.classList.remove('active');
   });
 };
+const showProjects = (project) => {
+  const sidebar = document.querySelector('.sidebar');
+  const projectsBtn = document.createElement('button');
+  projectsBtn.setAttribute('class', 'project');
+  projectsBtn.textContent = project.name;
+  sidebar.appendChild(projectsBtn);
+};
+const displayProjects = () => {
+  Projects.forEach(showProjects);
+};
 const addNewProject = () => {
   const projectForm = document.querySelector('.project-form');
   projectForm.addEventListener('submit', (e) => {
@@ -75,8 +87,10 @@ const addNewProject = () => {
     console.log(Projects);
     projectForm.reset();
     projectForm.classList.remove('active');
+    showProjects(project);
   });
 };
+
 export default () => {
   createHeading();
   createSidebar();
@@ -85,5 +99,6 @@ export default () => {
   createProjectForm();
   displayForm();
   cancelProject();
+  displayProjects();
   addNewProject();
 };
