@@ -32,3 +32,16 @@
     grid-area: 2/2/3/3;
     background-color: aqua;
 }
+.addProjectBtn{
+    padding: 10px 15px;
+    font-size: 1.4rem;
+    margin: 10px auto;
+    display: flex;
+    background:None;
+    border:none;
+}
+.addProjectBtn:hover{
+    background-color:coral;
+    cursor: pointer;
+    color:black;
+}
