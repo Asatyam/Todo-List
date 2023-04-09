@@ -8,6 +8,7 @@
 }
 
 .main{
+   position: relative;
     height: 100vh;
     display: grid;
     grid-template-columns:250px 1fr;
@@ -114,14 +115,34 @@
     background-color: chartreuse;
     color:black;
 }
-.todo-form{
-    background-color: bisque;
-    display: flex;
-    flex-direction: column;
-    gap:10px;
-    padding:20px;
-    margin:20px;
+
+.main.inactive{
+    z-index: -1000;
+    filter: blur(10px);
+    
 }
+.todo-form {
+        display: none;
+        position: relative;
+        font-family: "Helvetica" sans-serif;
+        background: linear-gradient(to right, #00b09b, #96c93d);
+        border-radius: 8px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+        
+}
+.active{   
+        display: flex;
+        flex-direction: column;
+        z-index: 1;
+        gap: 10px;
+        padding: 20px;
+        margin: 20px;
+}
+
 fieldset{
     padding: 10px;
 }
@@ -139,3 +160,4 @@ textarea{
 input[type="radio"]{
     margin: 10px;
 }
+

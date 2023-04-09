@@ -102,7 +102,7 @@ const createTodoForm = () => {
   const form = document.createElement('form');
   form.setAttribute('class', 'todo-form');
   form.innerHTML = `<input type="text" name="title" id="title" placeholder="Title" required />
-      <textarea cols="2" rows="2"></textarea>
+      <textarea cols="2" rows="2" placeholder="Description"></textarea>
       <fieldset>
         <legend>Priority</legend>
         <label for="priority">Low</label>
@@ -116,10 +116,26 @@ const createTodoForm = () => {
         <button type="submit" class="add-todo">Create</button>
         <button type="button" class="cancel-todo">Cancel</button>
       `;
-  const content = document.querySelector('.content');
-  content.appendChild(form);
+  document.body.appendChild(form);
 };
+const displayTodoForm = () => {
+  const newToDoBtn = document.querySelector('.new-todo');
+  newToDoBtn.addEventListener('click', () => {
+    const form = document.querySelector('.todo-form');
+    form.classList.add('active');
+    main.classList.add('inactive');
+  });
+};
+const cancelTodo = () => {
+  const cancelTodoBtn = document.querySelector('.cancel-todo');
 
+  const form = document.querySelector('.todo-form');
+  cancelTodoBtn.addEventListener('click', () => {
+    form.reset();
+    form.classList.remove('active');
+    main.classList.remove('inactive');
+  });
+};
 export default () => {
   createHeading();
   createSidebar();
@@ -132,4 +148,6 @@ export default () => {
   addNewProject();
   createNewTodo();
   createTodoForm();
+  displayTodoForm();
+  cancelTodo();
 };
