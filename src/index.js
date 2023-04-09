@@ -1,3 +1,3 @@
-import { default as UI } from './UI';
+import UI from './UI';
 
 UI();

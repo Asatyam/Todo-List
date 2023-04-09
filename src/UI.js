@@ -9,6 +9,19 @@ const createHeading = () => {
   main.appendChild(headingDiv);
 };
 
+const createSidebar = () => {
+  const sidebarDiv = document.createElement('div');
+  sidebarDiv.setAttribute('class', 'sidebar');
+  main.appendChild(sidebarDiv);
+};
+
+const createContent = () => {
+    const contentDiv = document.createElement('div');
+    contentDiv.setAttribute('class','content');
+    main.appendChild(contentDiv);
+}
 export default () => {
   createHeading();
+  createSidebar();
+  createContent();
 };
