@@ -39,6 +39,7 @@
     display: flex;
     background:None;
     border:none;
+    color: white;
 }
 .addProjectBtn:hover{
     background-color:coral;
