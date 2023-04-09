@@ -98,6 +98,28 @@ const createNewTodo = () => {
   content.appendChild(newToDoBtn);
 };
 
+const createTodoForm = () => {
+  const form = document.createElement('form');
+  form.setAttribute('class', 'todo-form');
+  form.innerHTML = `<input type="text" name="title" id="title" placeholder="Title" required />
+      <textarea cols="2" rows="2"></textarea>
+      <fieldset>
+        <legend>Priority</legend>
+        <label for="priority">Low</label>
+        <input type="radio" name="priority" id="priority" />
+        <label for="priority">Medium</label>
+        <input type="radio" name="priority" id="priority" />
+        <label for="priority">High</label>
+        <input type="radio" name="priority" id="priority" />
+      </fieldset>
+      <div class="todo-buttons">
+        <button type="submit" class="add-todo">Create</button>
+        <button type="button" class="cancel-todo">Cancel</button>
+      `;
+  const content = document.querySelector('.content');
+  content.appendChild(form);
+};
+
 export default () => {
   createHeading();
   createSidebar();
@@ -109,4 +131,5 @@ export default () => {
   displayProjects();
   addNewProject();
   createNewTodo();
+  createTodoForm();
 };
