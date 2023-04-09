@@ -1,3 +1,6 @@
+import Project from './Logic';
+
+const Projects = [];
 const main = document.querySelector('.main');
 
 const createHeading = () => {
@@ -47,7 +50,7 @@ const createProjectForm = () => {
   sidebar.appendChild(form);
 };
 
-const addNewProject = () => {
+const displayForm = () => {
   const addProjectBtn = document.querySelector('.addProjectBtn');
   addProjectBtn.addEventListener('click', () => {
     const projectForm = document.querySelector('.project-form');
@@ -62,12 +65,25 @@ const cancelProject = () => {
     projectForm.classList.remove('active');
   });
 };
+const addNewProject = () => {
+  const projectForm = document.querySelector('.project-form');
+  projectForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const projectName = document.querySelector('#project-name').value;
+    const project = new Project(projectName, {});
+    Projects.push(project);
+    console.log(Projects);
+    projectForm.reset();
+    projectForm.classList.remove('active');
+  });
+};
 export default () => {
   createHeading();
   createSidebar();
   createContent();
   createProject();
   createProjectForm();
-  addNewProject();
+  displayForm();
   cancelProject();
+  addNewProject();
 };
