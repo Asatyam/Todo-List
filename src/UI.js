@@ -1,7 +1,15 @@
 import Project from './Project';
+import Todo from './Todo';
 // import Todo from './Todo';
 
 const Projects = [];
+const todo1 = new Todo('Brush my teeth', 'Testing', 'High');
+const todo2 = new Todo('Brush my teeth', 'Testing', 'High');
+const todo3 = new Todo('Brush my teeth', 'Testing', 'High');
+const todos = [todo1, todo2, todo3];
+const home = new Project('Home', todos);
+Projects.push(home);
+
 const main = document.querySelector('.main');
 
 const createHeading = () => {
@@ -102,15 +110,12 @@ const createTodoForm = () => {
   const form = document.createElement('form');
   form.setAttribute('class', 'todo-form');
   form.innerHTML = `<input type="text" name="title" id="title" placeholder="Title" required />
-      <textarea cols="2" rows="2" placeholder="Description"></textarea>
+      <textarea id="description" cols="2" rows="2" placeholder="Description"></textarea>
       <fieldset>
         <legend>Priority</legend>
-        <label for="priority">Low</label>
-        <input type="radio" name="priority" id="priority" />
-        <label for="priority">Medium</label>
-        <input type="radio" name="priority" id="priority" />
-        <label for="priority">High</label>
-        <input type="radio" name="priority" id="priority" />
+        <input type="radio" name="priority" value="low" id="low" />Low
+        <input type="radio" name="priority" value="medium" id="medium" />Medium
+        <input type="radio" name="priority" value="high" id="high"/>High
       </fieldset>
       <div class="todo-buttons">
         <button type="submit" class="add-todo">Create</button>
@@ -136,6 +141,39 @@ const cancelTodo = () => {
     main.classList.remove('inactive');
   });
 };
+const displayOneTodo = (todo) => {
+  const todoUl = document.querySelector('.todo-list');
+  const todoPara = document.createElement('li');
+  todoPara.setAttribute('class', 'todo');
+  todoPara.textContent = `${todo.title}  ${todo.description}  ${todo.priority}`;
+  todoUl.appendChild(todoPara);
+};
+const displayTodos = () => {
+  const content = document.querySelector('.content');
+  const todoUl = document.createElement('ul');
+  todoUl.setAttribute('class', 'todo-list');
+  content.appendChild(todoUl);
+  Projects.push(home);
+  home.todos.forEach(displayOneTodo);
+};
+
+const addNewTodo = () => {
+  const form = document.querySelector('.todo-form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const title = document.querySelector('#title').value;
+    const description = document.querySelector('#description').value;
+    const priority = document.querySelector(
+      'input[name="priority"]:checked'
+    ).value;
+    form.reset();
+    const todo = new Todo(title, description, priority);
+    home.addNewTodo(todo);
+    displayOneTodo(todo);
+    form.classList.remove('active');
+    main.classList.remove('inactive');
+  });
+};
 export default () => {
   createHeading();
   createSidebar();
@@ -150,4 +188,6 @@ export default () => {
   createTodoForm();
   displayTodoForm();
   cancelTodo();
+  displayTodos();
+  addNewTodo();
 };
