@@ -114,3 +114,28 @@
     background-color: chartreuse;
     color:black;
 }
+.todo-form{
+    background-color: bisque;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    padding:20px;
+    margin:20px;
+}
+fieldset{
+    padding: 10px;
+}
+.todo-form input[type="text"]{
+    width: 400px;
+    font-size: 1.3rem;
+    padding: 3px 6px;
+}
+textarea{
+    width: 400px;
+    padding: 8px;
+    resize:vertical;
+    font-size: 1.2rem;
+}
+input[type="radio"]{
+    margin: 10px;
+}
