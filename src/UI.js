@@ -3,9 +3,9 @@ import Todo from './Todo';
 // import Todo from './Todo';
 
 const Projects = [];
-const todo1 = new Todo('Brush my teeth', 'Testing', 'High');
-const todo2 = new Todo('Brush my teeth', 'Testing', 'High');
-const todo3 = new Todo('Brush my teeth', 'Testing', 'High');
+const todo1 = new Todo('Brush my teeth', 'Testing1', 'High');
+const todo2 = new Todo('Study 5 chapters', 'Testing2', 'High');
+const todo3 = new Todo('Go to college', 'Testing3', 'High');
 const todos = [todo1, todo2, todo3];
 const home = new Project('Home', todos);
 Projects.push(home);
@@ -143,18 +143,44 @@ const cancelTodo = () => {
 };
 const displayOneTodo = (todo) => {
   const todoUl = document.querySelector('.todo-list');
-  const todoPara = document.createElement('li');
-  todoPara.setAttribute('class', 'todo');
-  todoPara.textContent = `${todo.title}  ${todo.description}  ${todo.priority}`;
-  todoUl.appendChild(todoPara);
+  const todoBtn = document.createElement('button');
+  todoBtn.setAttribute('class', 'todo');
+  todoBtn.textContent = `${todo.title}`;
+  // eslint-disable-next-line no-use-before-define
+  todoBtn.addEventListener('click', temp);
+  todoUl.appendChild(todoBtn);
 };
 const displayTodos = () => {
   const content = document.querySelector('.content');
-  const todoUl = document.createElement('ul');
-  todoUl.setAttribute('class', 'todo-list');
-  content.appendChild(todoUl);
+  const todoDiv = document.createElement('div');
+  todoDiv.setAttribute('class', 'todo-list');
+  content.appendChild(todoDiv);
   Projects.push(home);
   home.todos.forEach(displayOneTodo);
+};
+const createDescriptionCard = (e) => {
+  const descriptionPara = document.querySelector('.description-card p');
+  const todoTitle = e.target.textContent;
+  const { description } = home.todos.find((x) => x.title === todoTitle);
+  descriptionPara.textContent = description;
+  console.log(description);
+};
+function temp(e) {
+  const descriptionDiv = document.querySelector('.description-card');
+  descriptionDiv.classList.add('active');
+  main.classList.add('inactive');
+  createDescriptionCard(e);
+}
+const displayDescription = () => {
+  const descriptionDiv = document.createElement('div');
+  descriptionDiv.setAttribute('class', 'description-card');
+  const descriptionPara = document.createElement('p');
+  descriptionDiv.appendChild(descriptionPara);
+  document.body.appendChild(descriptionDiv);
+  const todoBtns = document.querySelectorAll('.todo');
+  todoBtns.forEach((todoBtn) => {
+    todoBtn.addEventListener('click', temp);
+  });
 };
 
 const addNewTodo = () => {
@@ -174,6 +200,16 @@ const addNewTodo = () => {
     main.classList.remove('inactive');
   });
 };
+
+const hideDescription = () => {
+  const descriptionDiv = document.querySelector('.description-card');
+  document.addEventListener('click', (e) => {
+    if (!descriptionDiv.contains(e.target) && e.target.className !== 'todo') {
+      descriptionDiv.classList.remove('active');
+      main.classList.remove('inactive');
+    }
+  });
+};
 export default () => {
   createHeading();
   createSidebar();
@@ -190,4 +226,6 @@ export default () => {
   cancelTodo();
   displayTodos();
   addNewTodo();
+  displayDescription();
+  hideDescription();
 };

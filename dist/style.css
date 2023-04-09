@@ -161,3 +161,37 @@ input[type="radio"]{
     margin: 10px;
 }
 
+.todo-list{
+  
+    max-height: 90%;
+    background-color: darkcyan;
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+    padding:20px;
+    list-style: none;
+    overflow: scroll;
+}
+.todo{
+    background-color: #96c93d;
+    font-size: 1.4rem;
+    padding: 5px;
+}
+.description-card{
+    display: none;
+    position: fixed;
+    top:50%;
+    left: 50%;
+    margin-top:-200px;
+    margin-left: -200px;
+    z-index: 1;
+    height: 400px;
+    width: 400px;
+    background-color: white;
+}
+.description-card.active{
+    display: flex;
+}
+.description-card:active{
+    background-color: pink;
+}
