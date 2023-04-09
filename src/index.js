@@ -1,5 +1,4 @@
 import UI from './UI';
-import Project from './Project';
 
 UI();
 // const Home = new Project('Home', []);

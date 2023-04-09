@@ -1,9 +1,8 @@
 import Project from './Project';
-import Todo from './Todo';
+// import Todo from './Todo';
 
 const Projects = [];
 const main = document.querySelector('.main');
-
 
 const createHeading = () => {
   const headingDiv = document.createElement('div');
@@ -52,7 +51,7 @@ const createProjectForm = () => {
   sidebar.appendChild(form);
 };
 
-const displayForm = () => {
+const displayProjectForm = () => {
   const addProjectBtn = document.querySelector('.addProjectBtn');
   addProjectBtn.addEventListener('click', () => {
     const projectForm = document.querySelector('.project-form');
@@ -91,14 +90,23 @@ const addNewProject = () => {
   });
 };
 
+const createNewTodo = () => {
+  const newToDoBtn = document.createElement('button');
+  newToDoBtn.setAttribute('class', 'new-todo');
+  newToDoBtn.textContent = '+  Create Todo item';
+  const content = document.querySelector('.content');
+  content.appendChild(newToDoBtn);
+};
+
 export default () => {
   createHeading();
   createSidebar();
   createContent();
   createProject();
   createProjectForm();
-  displayForm();
+  displayProjectForm();
   cancelProject();
   displayProjects();
   addNewProject();
+  createNewTodo();
 };

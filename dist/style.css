@@ -12,6 +12,7 @@
     display: grid;
     grid-template-columns:250px 1fr;
     grid-template-rows: 80px 1fr;
+    background-color: aqua;
 }
 .heading{
     grid-area: 1/1/2/3;
@@ -28,10 +29,7 @@
     grid-area: 2/1/3/2;
     background-color: navy;
 }
-.content{
-    grid-area: 2/2/3/3;
-    background-color: aqua;
-}
+
 .addProjectBtn{
     padding: 10px 15px;
     font-size: 1.4rem;
@@ -96,4 +94,23 @@
 .project:hover{
     background-color:darkslategrey;
     cursor: pointer;
+}
+.content {
+    grid-area: 2/2/3/3;
+
+    width: 800px;
+    margin: 50px auto;
+    padding: 0px 100px;
+
+}
+.new-todo{
+    padding: 5px 15px;
+    margin: 0 auto;
+    font-size: 1.3rem;
+    background-color:tomato;
+    color: white;
+}
+.new-todo:hover{
+    background-color: chartreuse;
+    color:black;
 }
