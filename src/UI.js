@@ -1,6 +1,7 @@
 import Project from './Project';
 import Todo from './Todo';
 // import Todo from './Todo';
+let currProject;
 
 const Projects = [];
 const todo1 = new Todo('Do work A', 'Testing1', 'High');
@@ -8,7 +9,9 @@ const todo2 = new Todo('Do work B', 'Testing2', 'High');
 const todo3 = new Todo('Do work C', 'Testing3', 'High');
 const todos = [todo1, todo2, todo3];
 const home = new Project('Home', todos);
+const today = new Project('Today', [todo2, todo3, todo1]);
 Projects.push(home);
+Projects.push(today);
 
 const main = document.querySelector('.main');
 
@@ -194,7 +197,7 @@ const addNewTodo = () => {
     ).value;
     form.reset();
     const todo = new Todo(title, description, priority);
-    home.addNewTodo(todo);
+    currProject.addNewTodo(todo);
     displayOneTodo(todo);
     form.classList.remove('active');
     main.classList.remove('inactive');
@@ -208,6 +211,20 @@ const hideDescription = () => {
       descriptionDiv.classList.remove('active');
       main.classList.remove('inactive');
     }
+  });
+};
+
+const displayTodoOfProject = () => {
+  const projectBtns = document.querySelectorAll('.project');
+  projectBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const projectName = e.target.textContent;
+      const todoList = document.querySelector('.todo-list');
+      todoList.textContent = '';
+      const project = Projects.find((x) => x.name === projectName);
+      currProject = project;
+      project.todos.forEach(displayOneTodo);
+    });
   });
 };
 export default () => {
@@ -228,4 +245,5 @@ export default () => {
   addNewTodo();
   displayDescription();
   hideDescription();
+  displayTodoOfProject();
 };
