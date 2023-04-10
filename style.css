@@ -177,6 +177,13 @@ input[type="radio"]{
     font-size: 1.4rem;
     padding: 5px;
 }
+.todo.high{
+    background-color: red;
+    color:white;
+}
+.todo.medium{
+    background-color: yellow;
+}
 .description-card{
     display: none;
     position: fixed;
