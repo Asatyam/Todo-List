@@ -1,7 +1,7 @@
 import Project from './Project';
 import Todo from './Todo';
 // import Todo from './Todo';
-let currProject;
+
 
 const Projects = [];
 const todo1 = new Todo('Do work A', 'Testing1', 'High');
@@ -10,6 +10,7 @@ const todo3 = new Todo('Do work C', 'Testing3', 'High');
 const todos = [todo1, todo2, todo3];
 const home = new Project('Home', todos);
 const today = new Project('Today', [todo2, todo3, todo1]);
+let currProject = home;
 Projects.push(home);
 Projects.push(today);
 
