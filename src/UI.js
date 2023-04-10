@@ -132,8 +132,9 @@ const displayTodoForm = () => {
   const newToDoBtn = document.querySelector('.new-todo');
   newToDoBtn.addEventListener('click', () => {
     const form = document.querySelector('.todo-form');
+    console.log('working');
     form.classList.add('active');
-    main.classList.add('inactive');
+    main.classList.add('inactive-todo');
   });
 };
 const cancelTodo = () => {
@@ -143,7 +144,7 @@ const cancelTodo = () => {
   cancelTodoBtn.addEventListener('click', () => {
     form.reset();
     form.classList.remove('active');
-    main.classList.remove('inactive');
+    main.classList.remove('inactive-todo');
   });
 };
 const displayOneTodo = (todo) => {
@@ -165,7 +166,7 @@ const displayTodos = () => {
   home.todos.forEach(displayOneTodo);
 };
 const createDescriptionCard = (e) => {
-  const descriptionPara = document.querySelector('.description-card p');
+  const descriptionPara = document.querySelector('.description-card>p');
   const todoTitle = e.target.textContent;
   const { description } = currProject.todos.find((x) => x.title === todoTitle);
   descriptionPara.textContent = description;
@@ -174,7 +175,7 @@ const createDescriptionCard = (e) => {
 function temp(e) {
   const descriptionDiv = document.querySelector('.description-card');
   descriptionDiv.classList.add('active');
-  main.classList.add('inactive');
+  main.classList.add('inactive-description');
   createDescriptionCard(e);
 }
 const displayDescription = () => {
@@ -203,16 +204,21 @@ const addNewTodo = () => {
     currProject.addNewTodo(todo);
     displayOneTodo(todo);
     form.classList.remove('active');
-    main.classList.remove('inactive');
+    main.classList.remove('inactive-todo');
   });
 };
 
 const hideDescription = () => {
   const descriptionDiv = document.querySelector('.description-card');
   document.addEventListener('click', (e) => {
-    if (!descriptionDiv.contains(e.target) && e.target.className !== 'todo') {
+    // check if the target is div or todo button
+    if (
+      !descriptionDiv.contains(e.target) &&
+      e.target.className.split(' ')[0] !== 'todo' // since there are multiple classes
+    ) {
       descriptionDiv.classList.remove('active');
-      main.classList.remove('inactive');
+      console.log();
+      main.classList.remove('inactive-description');
     }
   });
 };
