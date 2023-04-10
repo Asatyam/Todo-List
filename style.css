@@ -172,18 +172,7 @@ input[type="radio"]{
     list-style: none;
     overflow: scroll;
 }
-.todo{
-    background-color: #96c93d;
-    font-size: 1.4rem;
-    padding: 5px;
-}
-.todo.high{
-    background-color: red;
-    color:white;
-}
-.todo.medium{
-    background-color: yellow;
-}
+
 .description-card{
     display: none;
     position: fixed;
@@ -204,3 +193,37 @@ input[type="radio"]{
 }
 
 
+/*Styling and beautification */
+.main{
+    background: linear-gradient(to right, #6190e8, #a7bfe8);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.sidebar{
+    background-color: #4338ca;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.new-todo{
+    box-shadow: 2px 2px 2px 2px #090909;
+}
+.todo-list{
+    box-shadow: 0px 0px 5px 5px #050505;
+    margin: 20px;
+}
+.todo {
+        background: linear-gradient(to right, green 0%, 1%, pink 1%, pink 100%);
+    font-size: 1.4rem;
+    padding: 5px;
+}
+
+.todo.high {
+    background: linear-gradient(to right, red 0%, 1%, pink 1%, pink 100%);
+        /* W3C */
+}
+
+.todo.medium {
+    background: linear-gradient(to right, yellow 0%,1%, pink 1%, pink 100%);
+}
