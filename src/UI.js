@@ -1,7 +1,7 @@
+/* eslint-disable comma-dangle */
 import Project from './Project';
 import Todo from './Todo';
 // import Todo from './Todo';
-
 
 const Projects = [];
 const todo1 = new Todo('Do work A', 'Testing1', 'High');
@@ -150,6 +150,7 @@ const displayOneTodo = (todo) => {
   const todoUl = document.querySelector('.todo-list');
   const todoBtn = document.createElement('button');
   todoBtn.setAttribute('class', 'todo');
+  todoBtn.classList.add(todo.priority.toLowerCase());
   todoBtn.textContent = `${todo.title}`;
   // eslint-disable-next-line no-use-before-define
   todoBtn.addEventListener('click', temp);
@@ -229,6 +230,7 @@ const displayTodoOfProject = () => {
   const projectBtns = document.querySelectorAll('.project');
   projectBtns.forEach(displayTodoEventListener);
 };
+
 export default () => {
   createHeading();
   createSidebar();
