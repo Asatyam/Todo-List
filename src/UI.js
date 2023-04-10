@@ -82,6 +82,8 @@ const showProjects = (project) => {
   const projectsBtn = document.createElement('button');
   projectsBtn.setAttribute('class', 'project');
   projectsBtn.textContent = project.name;
+  // eslint-disable-next-line no-use-before-define
+  displayTodoEventListener(projectsBtn);
   sidebar.appendChild(projectsBtn);
 };
 const displayProjects = () => {
@@ -92,9 +94,8 @@ const addNewProject = () => {
   projectForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const projectName = document.querySelector('#project-name').value;
-    const project = new Project(projectName, {});
+    const project = new Project(projectName, []);
     Projects.push(project);
-    console.log(Projects);
     projectForm.reset();
     projectForm.classList.remove('active');
     showProjects(project);
@@ -164,7 +165,7 @@ const displayTodos = () => {
 const createDescriptionCard = (e) => {
   const descriptionPara = document.querySelector('.description-card p');
   const todoTitle = e.target.textContent;
-  const { description } = home.todos.find((x) => x.title === todoTitle);
+  const { description } = currProject.todos.find((x) => x.title === todoTitle);
   descriptionPara.textContent = description;
   console.log(description);
 };
@@ -213,19 +214,19 @@ const hideDescription = () => {
     }
   });
 };
-
+const displayTodoEventListener = (btn) => {
+  btn.addEventListener('click', (e) => {
+    const projectName = e.target.textContent;
+    const todoList = document.querySelector('.todo-list');
+    todoList.textContent = '';
+    const project = Projects.find((x) => x.name === projectName);
+    currProject = project;
+    project.todos.forEach(displayOneTodo);
+  });
+};
 const displayTodoOfProject = () => {
   const projectBtns = document.querySelectorAll('.project');
-  projectBtns.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      const projectName = e.target.textContent;
-      const todoList = document.querySelector('.todo-list');
-      todoList.textContent = '';
-      const project = Projects.find((x) => x.name === projectName);
-      currProject = project;
-      project.todos.forEach(displayOneTodo);
-    });
-  });
+  projectBtns.forEach(displayTodoEventListener);
 };
 export default () => {
   createHeading();
