@@ -99,7 +99,6 @@
 .content {
     grid-area: 2/2/3/3;
 
-    width: 800px;
     margin: 50px auto;
     padding: 0px 100px;
 
@@ -163,6 +162,7 @@ input[type="radio"]{
 
 .todo-list{
   
+    min-width: 500px;
     max-height: 90%;
     background-color: darkcyan;
     display: flex;

@@ -3,9 +3,9 @@ import Todo from './Todo';
 // import Todo from './Todo';
 
 const Projects = [];
-const todo1 = new Todo('Brush my teeth', 'Testing1', 'High');
-const todo2 = new Todo('Study 5 chapters', 'Testing2', 'High');
-const todo3 = new Todo('Go to college', 'Testing3', 'High');
+const todo1 = new Todo('Do work A', 'Testing1', 'High');
+const todo2 = new Todo('Do work B', 'Testing2', 'High');
+const todo3 = new Todo('Do work C', 'Testing3', 'High');
 const todos = [todo1, todo2, todo3];
 const home = new Project('Home', todos);
 Projects.push(home);
